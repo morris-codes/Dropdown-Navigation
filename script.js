@@ -1,4 +1,4 @@
-/*
+
 // Select elements
 const featuresLink = document.getElementById("featuresLink");
 const companyLink = document.getElementById("companyLink");
@@ -31,45 +31,4 @@ document.addEventListener("click", (e) => {
     document.querySelectorAll(".dropdown").forEach(d => d.style.display = "none");
   }
 });
-*/
-// Select dropdown toggles
-const navItems = document.querySelectorAll(".nav-item");
 
-navItems.forEach((item) => {
-    const link = item.querySelector(".nav-link");
-    const dropdown = item.querySelector(".dropdown");
-    const arrow = item.querySelector(".arrow");
-
-    if (dropdown) {
-        // Toggle dropdown and arrow direction on click
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const isVisible = dropdown.style.display === "block";
-
-            // Close all dropdowns
-            closeAllDropdowns();
-
-            // Toggle current dropdown and arrow
-            if (!isVisible) {
-                dropdown.style.display = "block";
-                arrow.classList.add("up");
-            }
-        });
-    }
-});
-
-// Close dropdowns when clicking outside
-document.addEventListener("click", (e) => {
-    if (!e.target.closest(".nav-item")) {
-        closeAllDropdowns();
-    }
-});
-
-function closeAllDropdowns() {
-    document.querySelectorAll(".dropdown").forEach((dropdown) => {
-        dropdown.style.display = "none";
-    });
-    document.querySelectorAll(".arrow").forEach((arrow) => {
-        arrow.classList.remove("up");
-    });
-}
